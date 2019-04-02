@@ -1,1 +1,11 @@
 @import "../variables";
+
+.contact-page-container{
+    margin-top:$page-margin-top;
+    min-height:$page-min-height;
+    h2{    
+        font-size: $page-title-font-size;
+        text-transform: $page-title-font-transform;
+        color:$sec-txt-color;
+    }
+}
