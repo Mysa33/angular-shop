@@ -3,9 +3,12 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-header',
   template: `
-    <p>
-      header works!
-    </p>
+    <div class="container-fluid shop-header-container">
+    
+      <app-nav></app-nav>
+    
+    </div>  
+
   `,
   styleUrls: ['./header.component.scss']
 })

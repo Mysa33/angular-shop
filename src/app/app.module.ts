@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './app-routing.module';
+import {RouterTestingModule} from '@angular/router/testing';
 
 import { AppComponent } from './app.component';
 import { ShopComponent } from './shop/shop.component';
@@ -20,7 +22,9 @@ import { ModalComponent } from './widgets/modal/modal.component';
     ModalComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+    RouterTestingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
