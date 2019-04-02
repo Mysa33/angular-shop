@@ -5,5 +5,10 @@ import { Injectable } from '@angular/core';
 })
 export class ShareDataService {
 
-  constructor() { }
+  public products:any[] = [];
+  public modalItem:object = new Object;
+  public cartItems:any[] = [];
+
+  constructor() {}
+
 }
