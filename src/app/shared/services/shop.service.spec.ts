@@ -1,16 +1,18 @@
 import { async, TestBed, inject } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
-
-import { HttpClientModule } from '@angular/common/http';
-import { ShopService } from './shop.service';
+import { HttpClientModule  } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
+import { ShopService } from './shop.service';
+import { MockProducts } from '../../../fixtures/mock-products';
 
 describe('ShopService', () => {
   beforeEach(async(() => {
 
     let httpMock: HttpTestingController;
     let dataService: ShopService;
+    
 
     TestBed.configureTestingModule({
       imports: [
@@ -56,6 +58,24 @@ describe('ShopService', () => {
     expect(data).toBeDefined();
     expect(data).not.toBeNull();
     expect(data).toEqual(jasmine.any(Observable));
+  }));
+
+  it('should setProduct() return an array', inject([ShopService], (service: ShopService) => {
+    let mock = new MockProducts().setMock();
+    let data = service.setProduct(mock);
+    expect(data).toBeTruthy();
+    expect(data).toBeDefined();
+    expect(data).not.toBeNull();
+    expect(data).toEqual(jasmine.any(Array));
+  }));
+
+  it('should setProduct() return array length to equal mock array length', inject([ShopService], (service: ShopService) => {
+    let mock = new MockProducts().setMock();
+    let data = service.setProduct(mock);
+    let mockLn = mock.length;
+    let dataLn = data.length;
+    expect(dataLn).toEqual(mockLn);
+   
   }));
 
 });
