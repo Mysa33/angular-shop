@@ -29,6 +29,18 @@ describe('CartComponent', () => {
     expect(component.pageName).toEqual('cart');
   });
 
+  it('should data to be defined', () => {
+    expect(component.data).toBeDefined();
+  });
+
+  it('should data to be not null', () => {
+    expect(component.data).not.toBeNull();
+  });
+
+  it('should data to be an array', () => {
+    expect(component.data).toEqual(jasmine.any(Array));
+  });
+
   it('should render div tag', fakeAsync(() => {
     expect(compiled.querySelector('div')).toBeTruthy();
   }));

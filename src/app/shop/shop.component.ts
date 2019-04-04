@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ShopService} from '../shared/services/shop.service';
+import { ShareDataService } from '../shared/services/share-data.service';
 
 @Component({
   selector: 'app-shop',
@@ -16,7 +17,7 @@ import {ShopService} from '../shared/services/shop.service';
         </div>
       </div>
       <div class="row shop-products-row" *ngIf = "!loaderVis"> 
-        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" *ngFor="let item of products; let i = index">
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 " *ngFor="let item of products; let i = index">
           <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="{{item.imgUrl}}" alt="{{item.name}}"/>
             <hr>
@@ -28,10 +29,10 @@ import {ShopService} from '../shared/services/shop.service';
                 Price : {{item.price}} $ 
                 
               </p>
-              <button class="btn shop-add-to-cart-btn">
+              <button class="btn shop-add-to-cart-btn" (click)="addToCart(products, i, cart)">
                 <div class="row">
                   <div class="col-lg-2"><i class="material-icons">shop</i></div>
-                  <div class="col-lg-2">Shop now</div>
+                  <div class="col-lg-2">Add to cart</div>
                 </div>
               </button>
             </div>
@@ -47,8 +48,9 @@ export class ShopComponent implements OnInit {
   public pageName:string = "shop";
   public products:any;
   public loaderVis:boolean = true;
+  public cart = [];
 
-  constructor(private _ProductsService:ShopService) { }
+  constructor(private _ProductsService:ShopService, private _ShareData:ShareDataService) { }
 
   ngOnInit() {
     this.loaderVis = true;
@@ -79,5 +81,13 @@ export class ShopComponent implements OnInit {
     return data;
 
   } 
+
+  addToCart(data:any[],i:number,cart:any):any[]{
+    
+    cart = this._ShareData.cartItems;
+    cart.push(data[i]);
+    return cart;
+    
+  }
 
 }

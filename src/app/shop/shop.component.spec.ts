@@ -70,6 +70,21 @@ describe('ShopComponent', () => {
     expect(mockLenght).toEqual(returedLength);
   });
 
+  it('should addTocart() return an array', () => {
+    let i:number = 1;
+    let cart = [];
+    let cartData = component.addToCart(mockData,i,cart);
+    expect(cartData).toEqual(jasmine.any(Array));
+  });
+
+  it('should addTocart() return not an empty array :', () => {
+    let i:number = 1;
+    let cart = [];
+    let cartData = component.addToCart(mockData,i,cart);
+    expect(cartData).toEqual(jasmine.any(Array));
+    expect((cartData).length).toBeGreaterThan(0);
+  });
+
   it('should render div tag', fakeAsync(() => {
     expect(compiled.querySelector('div')).toBeTruthy();
   }));
