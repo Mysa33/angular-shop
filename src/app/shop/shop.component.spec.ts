@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ShopComponent } from './shop.component';
@@ -10,7 +10,6 @@ describe('ShopComponent', () => {
   let fixture: ComponentFixture<ShopComponent>;
   let compiled;
   const mockData:any[] = new MockProducts().setMock();
-
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -31,7 +30,6 @@ describe('ShopComponent', () => {
     fixture = TestBed.createComponent(ShopComponent);
     component = fixture.componentInstance;
     compiled = fixture.debugElement.nativeElement;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
@@ -42,12 +40,24 @@ describe('ShopComponent', () => {
     expect(component.pageName).toEqual('shop');
   });
 
-  it('should products undefined', () => {
+  it('should products to be undefined', () => {
     expect(component.products).toBeUndefined();
   });
 
   it('should products to be not null', () => {
     expect(component.products).not.toBeNull();
+  });
+
+  it('should loaderVis to be defined', () => {
+    expect(component.loaderVis).toBeDefined();
+  });
+
+  it('should loaderVis to be boolean', () => {
+    expect(component.loaderVis).toEqual(jasmine.any(Boolean));
+  });
+
+  it('should loaderVis to be truthy', () => {
+    expect(component.loaderVis).toBeTruthy();
   });
 
   it('should setProducts() return an array', () => {
@@ -83,5 +93,13 @@ describe('ShopComponent', () => {
   it('should render only one h2 tag', fakeAsync(() => {
     expect((compiled.querySelectorAll('h2')).length).toEqual(1);
   }));
+
+  it('should render 2 div.row tag', fakeAsync(() => {
+    expect((compiled.querySelectorAll('div.row')).length).toEqual(2);
+  })); 
+
+  it('should render only one input tag', fakeAsync(() => {
+    expect((compiled.querySelectorAll('input')).length).toEqual(1);
+  })); 
 
 });

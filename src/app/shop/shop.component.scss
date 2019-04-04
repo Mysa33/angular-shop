@@ -8,4 +8,23 @@
         text-transform: $page-title-font-transform;
         color:$sec-txt-color;
     }
+
+    .shop-products-row{
+        .card {
+            margin-bottom:20px;
+            img{
+                width:80%;
+                height: auto;
+            }
+        }
+        button.shop-add-to-cart-btn{
+            background-color: $main-btn-bg!important;
+            .row{
+                color:$txt-white-color!important; 
+            }
+            
+            
+            
+        }
+    }
 }

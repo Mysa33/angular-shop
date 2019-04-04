@@ -29,7 +29,7 @@ export class ShopService {
         'name':data[i].name,
         'description':data[i].description,
         'rating':data[i].rating,
-        'img':data[i].image_link,
+        'imgUrl':data[i].api_featured_image,
         'colors':data[i].product_colors
       };
       items.push(item);

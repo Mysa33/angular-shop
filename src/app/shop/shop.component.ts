@@ -7,9 +7,35 @@ import {ShopService} from '../shared/services/shop.service';
     <div class="container shop-page-container">
       <div class="row">
         <div class="col-lg-12">
-        
           <h2>{{pageName}}</h2>
-
+        </div> 
+      </div>
+      <div class="row shop-search-row">
+        <div class="input-group mb-3">    
+          <input type="search" class="form-control" placeholder ="Rechercher par entreprise">          
+        </div>
+      </div>
+      <div class="row shop-products-row" *ngIf = "!loaderVis"> 
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" *ngFor="let item of products; let i = index">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{item.imgUrl}}" alt="{{item.name}}"/>
+            <hr>
+            <div class="card-body">
+              <h5 class="card-title">{{item.name}}</h5>
+              
+              <p class="card-text">
+              
+                Price : {{item.price}} $ 
+                
+              </p>
+              <button class="btn shop-add-to-cart-btn">
+                <div class="row">
+                  <div class="col-lg-2"><i class="material-icons">shop</i></div>
+                  <div class="col-lg-2">Shop now</div>
+                </div>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -20,10 +46,12 @@ export class ShopComponent implements OnInit {
 
   public pageName:string = "shop";
   public products:any;
+  public loaderVis:boolean = true;
 
   constructor(private _ProductsService:ShopService) { }
 
   ngOnInit() {
+    this.loaderVis = true;
     this.getProducts();
   }
 
@@ -32,12 +60,15 @@ export class ShopComponent implements OnInit {
     this._ProductsService.getData().subscribe(
       data => { 
         this.products = data;
-        console.log("products :", this.products);
-        this.setProducts(this.products);
         return this.products;
       },
       err => console.error(err),
-      () => console.log('done loading products')
+      () => {
+        console.log('done loading products');
+        this.products = this.setProducts(this.products);
+        this.loaderVis = false;
+        return this.products;
+      }
     );
     
   }

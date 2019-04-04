@@ -44,7 +44,7 @@ describe('ShopService', () => {
   }));
 
   it('should url to be string', inject([ShopService], (service: ShopService) => {
-    let url = service.url
+    let url = service.url;
     expect(url).toEqual(jasmine.any(String));
   }));
 
@@ -69,13 +69,12 @@ describe('ShopService', () => {
     expect(data).toEqual(jasmine.any(Array));
   }));
 
-  it('should setProduct() return array length to equal mock array length', inject([ShopService], (service: ShopService) => {
+  it('should setProduct() returned array length to equal mock array length', inject([ShopService], (service: ShopService) => {
     let mock = new MockProducts().setMock();
     let data = service.setProduct(mock);
     let mockLn = mock.length;
     let dataLn = data.length;
     expect(dataLn).toEqual(mockLn);
-   
   }));
 
 });
