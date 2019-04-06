@@ -26,12 +26,12 @@ describe('CartService', () => {
     expect(service).toBeTruthy();
   }));
 
-  it('should doTotal() to be defined', inject([CartService], (service: CartService) => {
+  /*it('should doTotal() to be defined', inject([CartService], (service: CartService) => {
     let data:any[] = [17.9,15.86,20.99];
     let total:number;
     let vat:number = 20;
     expect(service.doTotal(data, total, vat)).toBeDefined();
-  }));
+  }));*/
 
   it('should calcVat() to be defined', inject([CartService], (service: CartService) => {
     let value:number;
