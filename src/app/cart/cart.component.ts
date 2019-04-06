@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ShareDataService } from '../shared/services/share-data.service';
+import { CartService } from '../shared/services/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -28,9 +30,9 @@ import { ShareDataService } from '../shared/services/share-data.service';
         </div>
       </div>
       <div class="row cart-total-row">
-        <div class="col-lg-12"><span>Sub-total : </span></div>
+      {{subTotal}}
         <div class="col-lg-12"><span>V.A.T : 20%</span></div>
-        <div class="col-lg-12"><h5>Total : $</h5></div>
+        <div class="col-lg-12"><h5>Total : {{returnedData}} $</h5></div>
       </div>
     </div>
   `,
@@ -40,12 +42,24 @@ export class CartComponent implements OnInit {
 
   public pageName:string = "cart";
   public data:any[] = [];
+  public vat:number = 20;
+  public total:number;
+  public returnedData:any;
 
-  constructor(private _SaheData:ShareDataService) { }
+  constructor(private _SaheData:ShareDataService, private _CartService:CartService ) { }
 
   ngOnInit() {
 
     this.data = this._SaheData.cartItems;
+    this.returnedData = this.calcTotal(this.data,this.total,this.vat);
+    console.log('this data:', this.returnedData);
+
+  }
+
+  calcTotal(data:any[], total:number, vat:number):number{
+    
+    total = this._CartService.doTotal(data, total, vat);
+    return total;
 
   }
 

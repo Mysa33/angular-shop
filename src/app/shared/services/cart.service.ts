@@ -10,18 +10,22 @@ export class CartService {
   doTotal(data:any[], total:number, vat:number):number{
     
     const reducer = (a:number, b:number) => a + b;
-    const priceArray = data.map(elem =>elem.price );
+    const priceArray = data.map(elem =>Number(elem.price) );
     console.log("Price array :", priceArray);
-    let subTotal = priceArray.reduce(reducer);
+    let subTotal:number = Number((priceArray.reduce(reducer)).toFixed(2));
+    console.log("SubTotal :", subTotal);
     let returnedVal:number;
     let vatVal = this.calcVat(returnedVal, subTotal, vat);
-    return total = subTotal + vatVal;
+    total = subTotal + vatVal;
+    console.log("total :", total)
+    return total;
 
   }
 
   calcVat(value:number, subTotal:number, vat:number):number{
 
-    return value = Number(((subTotal/100)*vat).toFixed(2));
+    value = Number(((subTotal/100)*vat).toFixed(2));
+    return value;
 
   }
 
