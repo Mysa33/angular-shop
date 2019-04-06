@@ -11,6 +11,7 @@ import { ContactComponent } from './contact/contact.component';
 import { HeaderComponent } from './header/header.component';
 import { NavComponent } from './nav/nav.component';
 import { ModalComponent } from './widgets/modal/modal.component';
+import { LoaderComponent } from './widgets/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ModalComponent } from './widgets/modal/modal.component';
     ContactComponent,
     HeaderComponent,
     NavComponent,
-    ModalComponent
+    ModalComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
