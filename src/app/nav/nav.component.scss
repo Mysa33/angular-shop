@@ -24,10 +24,17 @@
         .nav-link{
             a.custom-link-icon{
                 i{
-                    color:#43b8d0!important;
+                    color:$sec-txt-color!important;
                 }
             }
             
+        }
+        .hearder-custom-badge{
+            position:relative;
+            top:-10px;
+            color:$txt-white-color;
+            background-color:$main-color;
+            border-radius:50%;
         }
     }
 }

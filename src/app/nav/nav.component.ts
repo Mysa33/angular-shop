@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ShareDataService } from '../shared/services/share-data.service';
+
 @Component({
   selector: 'app-nav',
   template: `
@@ -18,7 +20,12 @@ import { Component, OnInit } from '@angular/core';
             <a class="nav-link home-link" routerLink="/shop" routerLinkActive="active">Shop</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link custom-link" routerLink="/cart">Cart</a>
+            <a class="nav-link custom-link" routerLink="/cart">
+              <span>Cart</span>
+              <span class="badge badge-light hearder-custom-badge">
+                {{itemsNb}}
+              </span>
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link custom-link" routerLink="/contact">Contact</a>
@@ -32,9 +39,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  public itemsNb:number = 0;
+  public data:any;
+  constructor(private _SharedData:ShareDataService) {
+    this._SharedData.headerInfos.subscribe(receivedData=>{
+      this.data = receivedData;
+      this.itemsNb =  this.data.length;
+    });
+  }
 
   ngOnInit() {
+ 
   }
 
 }

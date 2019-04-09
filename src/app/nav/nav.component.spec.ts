@@ -82,11 +82,11 @@ describe('NavComponent', () => {
     expect(child.textContent).toEqual("Shop");
   }));
 
-  it('should third li tag text to equal "Cart"', fakeAsync(() => {
+  it('should third li tag text to contain "Cart"', fakeAsync(() => {
     let elem = compiled.querySelector('ul');
     let child = elem.lastChild.previousSibling;
     expect(child.textContent).toBeTruthy(); 
-    expect(child.textContent).toEqual("Cart");
+    expect(child.textContent).toContain("Cart");
   }));
 
   it('should last li tag text to equal "Contact"', fakeAsync(() => {

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-header',
   template: `
-    <div class="container-fluid shop-header-container">
+    <div class="container-fluid fixed-top shop-header-container">
     
       <app-nav></app-nav>
     

@@ -2,6 +2,7 @@ import { async, TestBed, inject } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { ShareDataService } from './share-data.service';
+import { Observable } from 'rxjs';
 
 describe('ShareDataService', () => {
   beforeEach(async(() => {
@@ -50,6 +51,15 @@ describe('ShareDataService', () => {
 
   it('should cartItems to be array', inject([ShareDataService], (service: ShareDataService) => {
     expect(service.cartItems).toEqual(jasmine.any(Array));
+  }));
+
+  it('should headerInfos to be defined', inject([ShareDataService], (service: ShareDataService) => {
+    expect(service.headerInfos).toBeTruthy();
+    expect(service.headerInfos).toBeDefined();
+  }));
+
+  it('should products to be observalbe', inject([ShareDataService], (service: ShareDataService) => {
+    expect(service.headerInfos).toEqual(jasmine.any(Observable));
   }));
 
 });

@@ -44,14 +44,14 @@ export class CartComponent implements OnInit {
   public total:number;
   public returnedData:any =[];
 
-  constructor(private _SaheData:ShareDataService, private _CartService:CartService ) { }
+  constructor(private _ShareData:ShareDataService, private _CartService:CartService ) { }
 
   ngOnInit() {
 
-      this.data = this._SaheData.cartItems;
+      this.data = this._ShareData.cartItems;
       if(this.data.length>=1){
         this.returnedData = this.calcTotal(this.data,this.total,this.vat);
-        this.data = this._SaheData.cartItems;
+        this.data = this._ShareData.cartItems;
       }
 
 

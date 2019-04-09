@@ -13,8 +13,9 @@ import { ShareDataService } from '../shared/services/share-data.service';
       </div>
       <div class="row shop-search-row">
         <div class="input-group mb-3">    
-          <input type="search" class="form-control" placeholder ="Rechercher par entreprise">          
+          <input type="search" class="form-control" placeholder ="search by name">          
         </div>
+
       </div>
       <div class="row shop-products-row" *ngIf = "!loaderVis"> 
         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 " *ngFor="let item of products; let i = index">
@@ -23,11 +24,8 @@ import { ShareDataService } from '../shared/services/share-data.service';
             <hr>
             <div class="card-body">
               <h5 class="card-title">{{item.name}}</h5>
-              
               <p class="card-text">
-              
                 Price : {{item.price}} $ 
-                
               </p>
               <button class="btn shop-add-to-cart-btn" (click)="addToCart(products, i, cart)">
                 <div class="row">
@@ -53,8 +51,10 @@ export class ShopComponent implements OnInit {
   constructor(private _ProductsService:ShopService, private _ShareData:ShareDataService) { }
 
   ngOnInit() {
+
     this.loaderVis = true;
     this.getProducts();
+    
   }
 
   getProducts():any{
@@ -82,10 +82,11 @@ export class ShopComponent implements OnInit {
 
   } 
 
-  addToCart(data:any[],i:number,cart:any):any[]{
+  addToCart(data:any[], i:number, cart:any):any[]{
     
     cart = this._ShareData.cartItems;
     cart.push(data[i]);
+    this._ShareData.sendData(cart);
     return cart;
     
   }
