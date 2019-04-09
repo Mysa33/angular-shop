@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
-import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -63,7 +63,6 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 export class ContactComponent implements OnInit {
 
   public pageName:string = "contact";
-  //public contactForm:FormGroup;
 
   constructor() { }
 

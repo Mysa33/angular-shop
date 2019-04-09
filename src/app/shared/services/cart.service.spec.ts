@@ -49,7 +49,7 @@ describe('CartService', () => {
     expect(value).toBeTruthy();
     expect(value).toBeDefined();
     expect(value).not.toBeNull();
-    expect(value).toEqual(jasmine.any(Number))
+    expect(value).toEqual(jasmine.any(Number));
   }));
 
   it('should calcVat() returned value to equal 28.6', inject([CartService], (service: CartService) => {

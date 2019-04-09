@@ -70,16 +70,32 @@ describe('ContactComponent', () => {
     expect(compiled.querySelectorAll('div.contact-page-container').length).toEqual(1);
   }));
 
-  it('should render div.row', async(() => {
+  it('should render div.row', fakeAsync(() => {
     expect(compiled.getElementsByClassName('row')).toBeTruthy();
   })); 
 
-  it('should render h2 tag', async(() => {
+  it('should render h2 tag', fakeAsync(() => {
     expect(compiled.querySelectorAll('h2')).toBeTruthy();
   }));
   
-  it('should render only one h2 tag', async(() => {
+  it('should render only one h2 tag', fakeAsync(() => {
     expect((compiled.querySelectorAll('h2')).length).toEqual(1);
+  }));
+
+  it('should render 7 input tags', async(() => {
+    expect((compiled.querySelectorAll('input')).length).toEqual(7);
+  }));
+
+  it('should render 1 email input', async(() => {
+    expect((compiled.querySelectorAll('input[type=email]')).length).toEqual(1);
+  }));
+
+  it('should render 6 text input', async(() => {
+    expect((compiled.querySelectorAll('input[type=text]')).length).toEqual(6);
+  }));
+
+  it('should render only one textarea tag', async(() => {
+    expect((compiled.querySelectorAll('textarea')).length).toEqual(1);
   }));
 
 });
