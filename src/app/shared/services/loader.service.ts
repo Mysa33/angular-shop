@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LoaderService {
+  
   loaderFlag:boolean = true;
 
   constructor() { }

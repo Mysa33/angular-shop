@@ -50,12 +50,12 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
 
-    if(this.data.length>=1){
-
       this.data = this._SaheData.cartItems;
-      this.returnedData = this.calcTotal(this.data,this.total,this.vat);
-
-    }
+      if(this.data.length>=1){
+        console.log("data :", this.data.length);
+        this.returnedData = this.calcTotal(this.data,this.total,this.vat);
+        this.data = this._SaheData.cartItems;
+      }
 
 
   }
