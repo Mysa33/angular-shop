@@ -15,7 +15,8 @@ export class CartService {
     subTotal = priceArray.reduce(reducer);
     let returnedVal:number;
     let vatVal = this.calcVat(returnedVal, subTotal, vat);
-    return total = subTotal + vatVal;
+    total = Number((subTotal + vatVal).toFixed(2));
+    return total;
 
   }
 
