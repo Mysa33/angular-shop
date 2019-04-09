@@ -8,10 +8,8 @@ import { CartService } from '../shared/services/cart.service';
   template: `
     <div class="container cart-page-container">
       <div class="row">
-        <div class="col-lg-12">
-        
+        <div class="col-lg-12">    
           <h2>{{pageName}}</h2>
-
         </div>
       </div>
       <div class="row cart-list-row">
@@ -52,7 +50,6 @@ export class CartComponent implements OnInit {
 
       this.data = this._SaheData.cartItems;
       if(this.data.length>=1){
-        console.log("data :", this.data.length);
         this.returnedData = this.calcTotal(this.data,this.total,this.vat);
         this.data = this._SaheData.cartItems;
       }

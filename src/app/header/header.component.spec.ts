@@ -3,6 +3,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {RouterTestingModule} from '@angular/router/testing';
 import { Router} from "@angular/router";
 import {Location} from "@angular/common";
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { HeaderComponent } from './header.component';
 import { routes } from '../app-routing.module';
@@ -29,7 +30,8 @@ describe('HeaderComponent', () => {
         CUSTOM_ELEMENTS_SCHEMA
       ],
       imports: [
-        RouterTestingModule.withRoutes(routes)
+        RouterTestingModule.withRoutes(routes),
+        ReactiveFormsModule
       ]
     })
     .compileComponents();

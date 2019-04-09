@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ContactComponent } from './contact.component';
 
@@ -9,7 +10,8 @@ describe('ContactComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ContactComponent ]
+      declarations: [ ContactComponent ],
+      imports:[ReactiveFormsModule]
     })
     .compileComponents();
   }));
@@ -27,6 +29,33 @@ describe('ContactComponent', () => {
 
   it('should page name to equal "contact"', () => {
     expect(component.pageName).toEqual('contact');
+  });
+
+  it('form invalid when empty', () => {
+    expect(component.contactForm.valid).toBeFalsy();
+  });
+
+  it('email field validity', () => {
+    let errors = {};
+    let email = component.contactForm.controls['inputEmail'];
+    errors = email.errors || {};
+    expect(errors['required']).toBeTruthy();
+    email.setValue("test");
+    expect(errors['required']).toBeTruthy();
+  });
+
+  it('name field validity', () => {
+    let errors = {};
+    let name = component.contactForm.controls['inputName'];
+    errors = name.errors || {};
+    expect(errors['required']).toBeTruthy();
+  });
+
+  it('address field validity', () => {
+    let errors = {};
+    let address = component.contactForm.controls['inputAddress'];
+    errors = address.errors || {};
+    expect(errors['required']).toBeTruthy();
   });
 
   it('should render div tag', fakeAsync(() => {
