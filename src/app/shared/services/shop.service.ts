@@ -37,4 +37,29 @@ export class ShopService {
     return data = items;
   }
 
+  showMore(elems:number, nb:number, items:any[]):number{
+
+    let displayed = elems + nb;
+    console.log("number:", displayed);
+    if((items.length)<(displayed)){
+      return elems = items.length;
+    }else{
+      return elems = displayed;
+    }
+    
+  }
+
+  showLess(elems:number, nb:number):number{
+    if(elems == nb){
+      return elems = nb;
+    }else{
+      return elems = elems - nb;
+    }
+    
+  }
+
+  checkValue(elems:number, nb:number){
+
+  }
+
 }

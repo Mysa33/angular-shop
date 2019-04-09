@@ -8,23 +8,33 @@
         text-transform: $page-title-font-transform;
         color:$sec-txt-color;
     }
-
+    .shop-search-row{
+        margin-bottom: 30px;
+        button{
+            align-items: stretch;
+            color:#ffffff;
+            background-color: $main-btn-bg;
+            box-shadow: 0px 2px 4px 1px rgba(0,0,0,.2);
+        }
+        .shop-more-btn{
+            margin-left:10px;
+        }
+    }
     .shop-products-row{
         .card {
             margin-bottom:20px;
             img{
                 width:80%;
                 height: auto;
+                margin: auto;
             }
         }
         button.shop-add-to-cart-btn{
             background-color: $main-btn-bg!important;
+            box-shadow: 0px 2px 4px 1px rgba(0,0,0,.2);
             .row{
                 color:$txt-white-color!important; 
-            }
-            
-            
-            
+            } 
         }
     }
 }

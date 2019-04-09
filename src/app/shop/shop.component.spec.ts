@@ -85,6 +85,14 @@ describe('ShopComponent', () => {
     expect((cartData).length).toBeGreaterThan(0);
   });
 
+  it('should showMore() to be defined ', () => {
+    expect(component.showMore(10,10)).toBeDefined();
+  });
+
+  it('should showLess() to be defined ', () => {
+    expect(component.showLess(10,10)).toBeDefined();
+  });
+
   it('should render div tag', fakeAsync(() => {
     expect(compiled.querySelector('div')).toBeTruthy();
   }));

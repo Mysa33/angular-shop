@@ -77,4 +77,38 @@ describe('ShopService', () => {
     expect(dataLn).toEqual(mockLn);
   }));
 
+  it('should showMore() return number', inject([ShopService], (service: ShopService) => {
+    let itemsNb = service.showMore(10,10);
+    expect(itemsNb).toBeTruthy();
+    expect(itemsNb).toBeDefined();
+    expect(itemsNb).not.toBeNull();
+    expect(itemsNb).toEqual(jasmine.any(Number));
+  }));
+
+  it('should showMore() return 20', inject([ShopService], (service: ShopService) => {
+    let itemsNb = service.showMore(10,10);
+    expect(itemsNb).toBeTruthy();
+    expect(itemsNb).toBeDefined();
+    expect(itemsNb).not.toBeNull();
+    expect(itemsNb).toEqual(jasmine.any(Number));
+    expect(itemsNb).toEqual(20);
+  }));
+
+  it('should showLess() return number', inject([ShopService], (service: ShopService) => {
+    let itemsNb = service.showLess(20,10);
+    expect(itemsNb).toBeTruthy();
+    expect(itemsNb).toBeDefined();
+    expect(itemsNb).not.toBeNull();
+    expect(itemsNb).toEqual(jasmine.any(Number));
+  }));
+
+  it('should showLess() return 20', inject([ShopService], (service: ShopService) => {
+    let itemsNb = service.showLess(20,10);
+    expect(itemsNb).toBeTruthy();
+    expect(itemsNb).toBeDefined();
+    expect(itemsNb).not.toBeNull();
+    expect(itemsNb).toEqual(jasmine.any(Number));
+    expect(itemsNb).toEqual(10);
+  }));
+
 });

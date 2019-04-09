@@ -12,13 +12,30 @@ import { ShareDataService } from '../shared/services/share-data.service';
         </div> 
       </div>
       <div class="row shop-search-row">
-        <div class="input-group mb-3">    
+        <div class="input-group col-lg-5">    
           <input type="search" class="form-control" placeholder ="search by name">          
+        </div>
+        <div class="col-lg-4">
+          Displayed : {{displayedItems}}/{{itemsNb}}
+        </div>
+
+        <div class="col-lg-3">
+          <button class="btn">
+            <i class="material-icons" (click)="showLess(displayedItems, increm);">
+              remove_circle
+            </i>
+        
+          </button>
+          <button class="btn shop-more-btn">
+            <i class="material-icons btn-icon" (click)="showMore(displayedItems, increm, products);">
+              add_circle
+            </i>
+          </button>
         </div>
 
       </div>
       <div class="row shop-products-row" *ngIf = "!loaderVis"> 
-        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 " *ngFor="let item of products; let i = index">
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 " *ngFor="let item of products | slice:0:displayedItems; let i = index">
           <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="{{item.imgUrl}}" alt="{{item.name}}"/>
             <hr>
@@ -30,7 +47,7 @@ import { ShareDataService } from '../shared/services/share-data.service';
               <button class="btn shop-add-to-cart-btn" (click)="addToCart(products, i, cart)">
                 <div class="row">
                   <div class="col-lg-2"><i class="material-icons">shop</i></div>
-                  <div class="col-lg-2">Add to cart</div>
+                  <div class="col-lg-2">Add</div>
                 </div>
               </button>
             </div>
@@ -47,11 +64,19 @@ export class ShopComponent implements OnInit {
   public products:any;
   public loaderVis:boolean = true;
   public cart = [];
+  public itemsNb:number = 0;
+  public displayedItems:number;
+  public increm:number = 10;
 
-  constructor(private _ProductsService:ShopService, private _ShareData:ShareDataService) { }
+  constructor(
+    private _ProductsService:ShopService, 
+    private _ShareData:ShareDataService,
+    private _ShopService:ShopService
+    ) { }
 
   ngOnInit() {
 
+    this.displayedItems = 10;
     this.loaderVis = true;
     this.getProducts();
     
@@ -69,6 +94,7 @@ export class ShopComponent implements OnInit {
         console.log('done loading products');
         this.products = this.setProducts(this.products);
         this.loaderVis = false;
+        this.itemsNb = this.products.length;
         return this.products;
       }
     );
@@ -91,4 +117,17 @@ export class ShopComponent implements OnInit {
     
   }
 
+  showMore(disItems:number, nb:number, items):number{
+    
+    disItems = this._ShopService.showMore(disItems, nb, items);
+    return this.displayedItems = disItems;
+
+  }
+
+  showLess(disItems:number, nb:number){
+
+    disItems = this._ShopService.showLess(disItems, nb);
+    return this.displayedItems = disItems;
+
+  }
 }
