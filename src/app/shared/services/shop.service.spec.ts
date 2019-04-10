@@ -78,7 +78,8 @@ describe('ShopService', () => {
   }));
 
   it('should showMore() return number', inject([ShopService], (service: ShopService) => {
-    let itemsNb = service.showMore(10,10);
+    let mock = new MockProducts().setMock();
+    let itemsNb = service.showMore(10,10,mock);
     expect(itemsNb).toBeTruthy();
     expect(itemsNb).toBeDefined();
     expect(itemsNb).not.toBeNull();
@@ -86,7 +87,8 @@ describe('ShopService', () => {
   }));
 
   it('should showMore() return 20', inject([ShopService], (service: ShopService) => {
-    let itemsNb = service.showMore(10,10);
+    let mock = new MockProducts().setMock();
+    let itemsNb = service.showMore(10,10,mock);
     expect(itemsNb).toBeTruthy();
     expect(itemsNb).toBeDefined();
     expect(itemsNb).not.toBeNull();

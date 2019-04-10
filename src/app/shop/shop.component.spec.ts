@@ -86,7 +86,7 @@ describe('ShopComponent', () => {
   });
 
   it('should showMore() to be defined ', () => {
-    expect(component.showMore(10,10)).toBeDefined();
+    expect(component.showMore(10,10, mockData)).toBeDefined();
   });
 
   it('should showLess() to be defined ', () => {
