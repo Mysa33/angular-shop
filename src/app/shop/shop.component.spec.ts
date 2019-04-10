@@ -1,9 +1,11 @@
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { ShopComponent } from './shop.component';
 import {ShopService} from '../shared/services/shop.service';
 import { MockProducts } from '../../fixtures/mock-products';
+import { FilterDataPipe } from '../shared/pipes/filter-data.pipe';
 
 describe('ShopComponent', () => {
   let component: ShopComponent;
@@ -14,13 +16,15 @@ describe('ShopComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ 
-        ShopComponent 
+        ShopComponent,
+        FilterDataPipe 
       ],
       providers:[
         ShopService
       ],
       imports:[
-        HttpClientModule
+        HttpClientModule,
+        FormsModule
       ]
     })
     .compileComponents();

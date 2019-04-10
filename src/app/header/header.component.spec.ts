@@ -3,13 +3,14 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {RouterTestingModule} from '@angular/router/testing';
 import { Router} from "@angular/router";
 import {Location} from "@angular/common";
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { HeaderComponent } from './header.component';
 import { routes } from '../app-routing.module';
 import { ShopComponent } from '../shop/shop.component';
 import { CartComponent } from '../cart/cart.component';
 import { ContactComponent } from '../contact/contact.component';
+import { FilterDataPipe } from '../shared/pipes/filter-data.pipe';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -24,14 +25,16 @@ describe('HeaderComponent', () => {
         HeaderComponent,
         ShopComponent,
         CartComponent,
-        ContactComponent
+        ContactComponent,
+        FilterDataPipe
       ],
       schemas: [
         CUSTOM_ELEMENTS_SCHEMA
       ],
       imports: [
         RouterTestingModule.withRoutes(routes),
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        FormsModule
       ]
     })
     .compileComponents();

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 import {ShopService} from '../shared/services/shop.service';
 import { ShareDataService } from '../shared/services/share-data.service';
 
@@ -13,7 +15,7 @@ import { ShareDataService } from '../shared/services/share-data.service';
       </div>
       <div class="row shop-search-row">
         <div class="input-group col-lg-5">    
-          <input type="search" class="form-control" placeholder ="search by name">          
+          <input type="search" class="form-control" [(ngModel)]="queryString" placeholder ="search by name">          
         </div>
         <div class="col-lg-4">
           Displayed : {{displayedItems}}/{{itemsNb}}
@@ -35,7 +37,7 @@ import { ShareDataService } from '../shared/services/share-data.service';
 
       </div>
       <div class="row shop-products-row" *ngIf = "!loaderVis"> 
-        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 " *ngFor="let item of products | slice:0:displayedItems; let i = index">
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 " *ngFor="let item of  products | filterData: queryString : 'name' | slice:0:displayedItems; let i = index">
           <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="{{item.imgUrl}}" alt="{{item.name}}"/>
             <hr>
